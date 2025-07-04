@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Krishna Tamang | Data Analyst</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #3a5a80;
+      --primary-light: #4a6fa5;
+      --secondary: #4e9c81;
+      --dark: #1a1a2e;
+      --light: #f8f9fa;
+      --gray: #6c757d;
+      --light-gray: #e9ecef;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      color: var(--dark);
+      background-color: var(--light);
+      scroll-behavior: smooth;
+    }
+    
+    /* Header */
+    header {
+      background-color: white;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      transition: all 0.3s ease;
+    }
+    
+    header.scrolled {
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      padding: 0.5rem 0;
+    }
+    
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      transition: all 0.3s ease;
+    }
+    
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--primary);
+      transition: all 0.3s ease;
+    }
+    
+    .nav-list {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+    
+    .nav-list a {
+      text-decoration: none;
+      color: var(--dark);
+      font-weight: 500;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+    
+    .nav-list a:hover {
+      color: var(--primary);
+    }
+    
+    .nav-list a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -4px;
+      left: 0;
+      background-color: var(--primary);
+      transition: width 0.3s ease;
+    }
+    
+    .nav-list a:hover::after {
+      width: 100%;
+    }
+    
+    /* Home Section */
+    .home-section {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                  url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') center/cover no-repeat;
+      color: white;
+      padding: 2rem;
+      margin-top: 60px;
+      transition: all 0.5s ease;
+    }
+    
+    .home-content {
+      max-width: 800px;
+      margin: 0 auto;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 1s ease forwards;
+    }
+    
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .home-content h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      transition: all 0.3s ease;
+    }
+    
+    .intro {
+      font-size: 1.25rem;
+      margin-bottom: 2rem;
+      opacity: 0.9;
+      transition: all 0.3s ease;
+    }
+    
+    .sql-skills {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 2rem;
+      flex-wrap: wrap;
+    }
+    
+    .skill-tag {
+      background-color: rgba(255,255,255,0.2);
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      transition: all 0.3s ease;
+    }
+    
+    .skill-tag:hover {
+      background-color: rgba(255,255,255,0.3);
+      transform: translateY(-2px);
+    }
+    
+    /* About Section */
+    .about-section {
+      padding: 4rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      margin-top: 2rem;
+      margin-bottom: 2rem;
+      transition: all 0.5s ease;
+    }
+    
+    .about-section h2 {
+      text-align: center;
+      margin-bottom: 3rem;
+      font-size: 2rem;
+      color: var(--primary);
+      position: relative;
+      display: inline-block;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    
+    .about-section h2::after {
+      content: '';
+      position: absolute;
+      width: 50%;
+      height: 3px;
+      bottom: -10px;
+      left: 25%;
+      background-color: var(--secondary);
+      border-radius: 3px;
+    }
+    
+    .about-content {
+      display: flex;
+      align-items: center;
+      gap: 3rem;
+    }
+    
+    .about-text {
+      flex: 1;
+    }
+    
+    .about-text p {
+      margin-bottom: 1.5rem;
+      font-size: 1.1rem;
+      line-height: 1.7;
+      color: var(--gray);
+    }
+    
+    .skills-list {
+      list-style: none;
+      margin-top: 1.5rem;
+    }
+    
+    .skills-list li {
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      transition: all 0.3s ease;
+    }
+    
+    .skills-list li:hover {
+      transform: translateX(5px);
+    }
+    
+    .skills-list i {
+      color: var(--secondary);
+      font-size: 1.2rem;
+    }
+    
+    .about-image {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+    }
+    
+    .image-placeholder {
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary-light), var(--secondary));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 5rem;
+      font-weight: bold;
+      box-shadow: 0 10px 30px rgba(74, 111, 165, 0.3);
+      transition: all 0.5s ease;
+    }
+    
+    .image-placeholder:hover {
+      transform: scale(1.05);
+      box-shadow: 0 15px 35px rgba(74, 111, 165, 0.4);
+    }
+    
+    /* Projects Section */
+    .projects-section {
+      padding: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    
+    .projects-toggle {
+      background-color: var(--primary);
+      color: white;
+      border: none;
+      padding: 1rem 2rem;
+      font-size: 1.2rem;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin-bottom: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      margin: 0 auto 2rem;
+    }
+    
+    .projects-toggle:hover {
+      background-color: var(--primary-light);
+      transform: translateY(-2px);
+    }
+    
+    .projects-toggle i {
+      transition: transform 0.3s ease;
+    }
+    
+    .projects-toggle.active i {
+      transform: rotate(180deg);
+    }
+    
+    .projects-container {
+      display: none;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .projects-container.show {
+      display: block;
+      animation: fadeIn 0.5s ease;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    
+    .projects-section h2 {
+      text-align: center;
+      margin-bottom: 3rem;
+      font-size: 2rem;
+      color: var(--primary);
+      position: relative;
+    }
+    
+    .projects-section h2::after {
+      content: '';
+      position: absolute;
+      width: 80px;
+      height: 3px;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: var(--secondary);
+      border-radius: 3px;
+    }
+    
+    .project-card {
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      overflow: hidden;
+      margin-bottom: 2rem;
+      display: flex;
+      flex-direction: column;
+      transition: all 0.3s ease;
+    }
+    
+    .project-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+    
+    .sql-visual {
+      padding: 1.5rem;
+      background: #f8f9fa;
+    }
+    
+    .sql-query-preview pre {
+      background: #2d3748;
+      color: #e2e8f0;
+      padding: 1rem;
+      border-radius: 6px;
+      overflow-x: auto;
+      font-family: monospace;
+      font-size: 0.9rem;
+      transition: all 0.3s ease;
+    }
+    
+    .project-details {
+      padding: 1.5rem;
+    }
+    
+    .project-details h3 {
+      margin-bottom: 1rem;
+      color: var(--primary);
+      transition: all 0.3s ease;
+    }
+    
+    .project-description {
+      margin-bottom: 1.5rem;
+      color: var(--gray);
+      transition: all 0.3s ease;
+    }
+    
+    .project-highlights {
+      background: #f1f8ff;
+      padding: 1rem;
+      border-radius: 6px;
+      margin-bottom: 1.5rem;
+      transition: all 0.3s ease;
+    }
+    
+    .project-highlights h4 {
+      margin-bottom: 0.5rem;
+      color: var(--primary);
+    }
+    
+    .project-highlights ul {
+      padding-left: 1.5rem;
+    }
+    
+    .project-highlights li {
+      margin-bottom: 0.5rem;
+      transition: all 0.3s ease;
+    }
+    
+    .project-links {
+      display: flex;
+      gap: 1rem;
+    }
+    
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.5rem;
+      border-radius: 6px;
+      font-weight: 500;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    
+    .github-btn {
+      background: #24292e;
+      color: white;
+    }
+    
+    .github-btn:hover {
+      background: #2d3338;
+      transform: translateY(-2px);
+    }
+    
+    .view-query-btn {
+      background: var(--secondary);
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    
+    .view-query-btn:hover {
+      background: #3e7d68;
+      transform: translateY(-2px);
+    }
+    
+    /* Contact Section */
+    .contact-section {
+      padding: 4rem 2rem;
+      max-width: 600px;
+      margin: 0 auto;
+      text-align: center;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 1s ease 0.3s forwards;
+    }
+    
+    .contact-section h2 {
+      margin-bottom: 1rem;
+      color: var(--primary);
+      position: relative;
+    }
+    
+    .contact-section h2::after {
+      content: '';
+      position: absolute;
+      width: 60px;
+      height: 3px;
+      bottom: -8px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: var(--secondary);
+      border-radius: 3px;
+    }
+    
+    .contact-section p {
+      margin-bottom: 2rem;
+      color: var(--gray);
+    }
+    
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    
+    .form-group {
+      position: relative;
+    }
+    
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 1rem;
+      border: 1px solid var(--light-gray);
+      border-radius: 6px;
+      font-family: inherit;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+    }
+    
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(58, 90, 128, 0.2);
+    }
+    
+    .form-group textarea {
+      min-height: 150px;
+      resize: vertical;
+    }
+    
+    .btn-primary {
+      background: var(--primary);
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    
+    .btn-primary:hover {
+      background: var(--primary-light);
+      transform: translateY(-2px);
+    }
+    
+    /* Footer */
+    footer {
+      background: var(--dark);
+      color: white;
+      padding: 2rem;
+      text-align: center;
+      transition: all 0.5s ease;
+    }
+    
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin: 1rem 0;
+    }
+    
+    .footer-links a {
+      color: white;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    
+    .footer-links a:hover {
+      color: var(--secondary);
+      transform: translateY(-2px);
+    }
+    
+    .copyright {
+      font-size: 0.9rem;
+      opacity: 0.8;
+    }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+      .nav-list {
+        display: none;
+      }
+      
+      .about-content {
+        flex-direction: column;
+      }
+      
+      .about-image {
+        margin-top: 2rem;
+      }
+      
+      .image-placeholder {
+        width: 200px;
+        height: 200px;
+        font-size: 3rem;
+      }
+      
+      .project-card {
+        flex-direction: column;
+      }
+      
+      .project-links {
+        flex-direction: column;
+      }
+      
+      .projects-toggle {
+        width: 90%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header id="header">
+    <nav>
+      <div class="nav-container">
+        <div class="logo">KT</div>
+        <ul class="nav-list">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Home Section -->
+    <section id="home" class="home-section">
+      <div class="home-content">
+        <h1>Krishna Tamang</h1>
+        <p class="intro">SQL Specialist | Data Analyst | Turning Raw Data into Business Insights</p>
+        <div class="sql-skills">
+          <span class="skill-tag">MySQL</span>
+          <span class="skill-tag">Excel and Power BI</span>
+          <span class="skill-tag">Python</span>
+          <span class="skill-tag">Data Visualization</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects-section">
+      <h2>My Projects</h2>
+      <button class="projects-toggle" id="projectsToggle">
+        <span>View SQL Projects</span>
+        <i class="fas fa-chevron-down"></i>
+      </button>
+      
+      <div class="projects-container" id="projectsContainer">
+        <!-- Spotify Project -->
+        <div class="project-card">
+          <div class="sql-visual">
+          </div>
+          <div class="project-details">
+            <h3>Spotify Top 150 Analysis</h3>
+            <p class="project-description">Analyzed the most streamed tracks to identify music industry trends and artist performance metrics across multiple dimensions including audio features, popularity, and temporal patterns.</p>
+            <div class="project-highlights">
+              <h4>Key Insights:</h4>
+              <ul>
+                <li>Identified 78% of top tracks fall between 2-3 minutes duration</li>
+                <li>Found inverse correlation between danceability and speechiness</li>
+                <li>Discovered seasonal patterns in genre popularity</li>
+                <li>Created predictive model for track success based on audio features</li>
+              </ul>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/krishna22-ops/spotify-top-150-sql" class="btn github-btn">
+                <i class="fab fa-github"></i> View on GitHub
+              </a>
+              <button class="btn view-query-btn">
+                <i class="fas fa-code"></i> View Full Analysis
+              </button>
+            </div>
+          </div>
+        </div>
+        <!-- Movies Project -->
+        <div class="project-card">
+          <div class="sql-visual">
+          </div>
+          <div class="project-details">
+            <h3>CineInsight_DB</h3>
+            <p class="project-description">SQL-based mini data warehouse built around real-world movie data.The schema is normalized across six key tables (movies, directors, genres, countries, and two bridge tables), enabling powerful querying and performance analysis.</p>
+            <div class="project-highlights">
+              <h4>Key Insights:</h4>
+              <ul>
+                <li>Longest films and their directors</li>
+                <li>Most active directors by film count</li>
+                <li>Genre popularity and quality trends</li>
+                <li>Countries contributing most to film production</li>
+                <li>Directors with consistently high ratings</li>
+              </ul>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/krishna22-ops/movies-sql" class="btn github-btn">
+                <i class="fab fa-github"></i> View on GitHub
+              </a>
+              <button class="btn view-query-btn">
+                <i class="fas fa-code"></i> View Full Analysis
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Books Project -->
+        <div class="project-card">
+          <div class="project-details">
+            <h3>Books Database System</h3>
+            <p class="project-description">Designed and implemented a comprehensive relational database for book tracking with advanced querying capabilities, supporting inventory management, recommendation systems, and sales analysis.</p>
+            <div class="project-highlights">
+              <h4>Database Features:</h4>
+              <ul>
+                <li>Normalized 3NF schema with 5 related tables (Books, Authors, Publishers, Genres, Reviews)</li>
+                <li>Advanced JOIN operations for review analysis and recommendation algorithms</li>
+                <li>Price vs. rating correlation studies across different genres</li>
+                <li>Automated reporting system for sales trends</li>
+                <li>User segmentation based on reading preferences</li>
+              </ul>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/krishna22-ops/books-sql" class="btn github-btn">
+                <i class="fab fa-github"></i> View on GitHub
+              </a>
+              <button class="btn view-query-btn">
+                <i class="fas fa-code"></i> View Schema
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    
+
+    <!-- About Section -->
+    <section id="about" class="about-section">
+      <h2>About Me</h2>
+      <div class="about-content">
+        <div class="about-text">
+          <p>Hi, I'm Krishna Tamang – a Computer Science student at the University of Greenwich with a strong passion for data analytics and turning raw data into meaningful insights. I'm currently building a solid foundation in programming, statistics, and data visualization, with the goal of becoming a skilled Data Analyst. I enjoy exploring the intersection of data and decision-making, and I'm always eager to learn new tools and technologies that help make sense of complex information.</p>
+          <p>Driven, curious, and detail-oriented, I'm working toward applying my knowledge in real-world projects that make a tangible impact.</p>
+          <ul class="skills-list">
+            <li><i class="fas fa-check-circle"></i> <strong>SQL</strong> & Database Management (MySQL, PostgreSQL)</li>
+          </ul>
+        </div>
+        <div class="about-image">
+          <div class="image-placeholder">KT</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+      <h2>Contact Me</h2>
+      <p>Have a data challenge or opportunity? I'd love to hear about it!</p>
+      <form class="contact-form">
+        <div class="form-group">
+          <input type="text" placeholder="Name" required>
+        </div>
+        <div class="form-group">
+          <input type="email" placeholder="Email" required>
+        </div>
+        <div class="form-group">
+          <textarea placeholder="Your message..." required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Send Message</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-links">
+      <a href="#home"><i class="fas fa-home"></i> Home</a>
+      <a href="#about"><i class="fas fa-user"></i> About</a>
+      <a href="#projects"><i class="fas fa-code"></i> Projects</a>
+      <a href="#contact"><i class="fas fa-envelope"></i> Contact</a>
+    </div>
+    <div class="social-links" style="margin: 1rem 0;">
+      <a href="https://github.com/krishna22-ops" target="_blank" style="color: white; margin: 0 10px; font-size: 1.2rem;"><i class="fab fa-github"></i></a>
+      <a href="https://linkedin.com/in/krishnatamang" target="_blank" style="color: white; margin: 0 10px; font-size: 1.2rem;"><i class="fab fa-linkedin"></i></a>
+      <a href="https://twitter.com/krishna_data" target="_blank" style="color: white; margin: 0 10px; font-size: 1.2rem;"><i class="fab fa-twitter"></i></a>
+    </div>
+    <p class="copyright">&copy; 2023 Krishna Tamang. All Rights Reserved.</p>
+  </footer>
+
+  <script>
+    // Header scroll effect
+    window.addEventListener('scroll', function() {
+      const header = document.getElementById('header');
+      if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+
+    // Projects toggle functionality
+    const projectsToggle = document.getElementById('projectsToggle');
+    const projectsContainer = document.getElementById('projectsContainer');
+
+    projectsToggle.addEventListener('click', function() {
+      projectsContainer.classList.toggle('show');
+      projectsToggle.classList.toggle('active');
+      
+      // Change button text based on state
+      const buttonText = projectsContainer.classList.contains('show') ? 'Hide Projects' : 'View Projects';
+      projectsToggle.querySelector('span').textContent = buttonText;
+    });
+  </script>
+</body>
+</html>
